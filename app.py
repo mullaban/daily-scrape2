@@ -36,14 +36,14 @@ logger = logging.getLogger("supplier_monitor")
 
 # Configuration
 CONFIG = {
-    "perplexity_api_key": os.environ.get("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"),
+    "perplexity_api_key": os.environ.get("PERPLEXITY_API_KEY"),
     "email": {
-        "smtp_server": os.environ.get("SMTP_SERVER", "smtp.office365.com"),
+        "smtp_server": os.environ.get("SMTP_SERVER", "smtp.gmail.com"),
         "smtp_port": int(os.environ.get("SMTP_PORT", 587)),
-        "username": os.environ.get("pkrpitest@outlook.com"),
-        "password": os.environ.get("NewPiTracker25!"),
-        "from_email": os.environ.get("pkrpitest@outlook.com"),
-        "to_email": os.environ.get("pjjk90@hotmail.com")
+        "username": os.environ.get("EMAIL_USERNAME"),
+        "password": os.environ.get("EMAIL_PASSWORD"),
+        "from_email": os.environ.get("FROM_EMAIL"),
+        "to_email": os.environ.get("TO_EMAIL")
     },
     "data_file": "last_scan_data.json",
     "suppliers": [
@@ -393,7 +393,7 @@ def main():
     local_time = datetime.now(irish_tz)
     logger.info(f"Current Irish time: {local_time}")
     
-    schedule.every().day.at("13:25").do(scheduled_job)
+    schedule.every().day.at("13:31").do(scheduled_job)
     logger.info("Supplier monitoring job scheduled to run at 8:30am Irish Time")
     
     # Run the job immediately on startup if requested
