@@ -393,7 +393,7 @@ def main():
     local_time = datetime.now(irish_tz)
     logger.info(f"Current Irish time: {local_time}")
     
-    schedule.every().day.at("13:05").do(scheduled_job)
+    schedule.every().day.at("13:16").do(scheduled_job)
     logger.info("Supplier monitoring job scheduled to run at 8:30am Irish Time")
     
     # Run the job immediately on startup if requested
