@@ -1,3 +1,12 @@
+# Add this near the top of app.py (after imports)
+import os
+print("==== DEBUG: ENVIRONMENT VARIABLES ====")
+for key, value in os.environ.items():
+    # Print the key and first character of value for security
+    masked_value = value[0] + "*****" if value else "None"
+    print(f"{key}: {masked_value}")
+print("=====================================")
+
 """
 EPS Global Supplier Monitoring Tool - Combined App
 
@@ -393,7 +402,7 @@ def main():
     local_time = datetime.now(irish_tz)
     logger.info(f"Current Irish time: {local_time}")
     
-    schedule.every().day.at("13:31").do(scheduled_job)
+    schedule.every().day.at("13:36").do(scheduled_job)
     logger.info("Supplier monitoring job scheduled to run at 8:30am Irish Time")
     
     # Run the job immediately on startup if requested
